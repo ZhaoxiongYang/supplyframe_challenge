@@ -95,9 +95,63 @@ app.get('/projects/:page', function (req, res) {
                         });
                     }
                 });
-
             })(i);
-
         };
+    });
+});
+
+app.get('/project/:id', function (req, res) {
+    console.log('\ninside /project/detail_page');
+    var id = req.params.id,
+        url = apiData.apiUrl + '/projects/' + id + apiData.apiKey;
+    console.log('\nProject detail Data Query: ', url);
+    request.get(url, function (error, response, body) {
+        var bodyData = parseJSON(body);
+        var url_user = apiData.apiUrl + '/users/' + bodyData.owner_id + apiData.apiKey;
+        request.get(url_user, function (error_users, response_users, body_users) {
+            var bodyData_users = parseJSON(body_users);
+            bodyData.user = bodyData_users;
+            var url_recp = apiData.apiUrl + '/projects/' + bodyData.id + '/tags' + apiData.apiKey;
+            console.log('\nProject recommand Data Query: ', url_recp);
+            request.get(url_recp, function (error_recp, response_recp, body_recp) {
+                var bodyData_recp = parseJSON(body_recp);
+                bodyData.tagsp = bodyData_recp.tags;
+                var list = '';
+                if (bodyData.tagsp[0]) {
+                    console.log('here');
+                    list = bodyData.tagsp[0].id;
+                    for (var i = 1; i < bodyData.tagsp.length; i++) {
+                        list = list + ',' + bodyData.tagsp[i].id;
+                    }
+                }
+                url = apiData.apiUrl + '/projects/batch' + apiData.apiKey + '&ids=' + list;
+                request.get(url, function (error_recps, response_recps, body_recps) {
+                    var bodyData_recps = parseJSON(body_recps);
+                    bodyData.tagsp = bodyData_recps;
+                    var url_recu = apiData.apiUrl + '/users/' + bodyData.owner_id + '/tags' + apiData.apiKey;
+                    console.log('\nUser recommand Data Query: ', url_recu);
+                    request.get(url_recu, function (error_recu, response_recu, body_recu) {
+                        var bodyData_recu = parseJSON(body_recu);
+                        bodyData.tagsu = bodyData_recu.tags;
+                        var list = '';
+                        if (bodyData.tagsu[0]) {
+                            list = bodyData.tagsu[0].id;
+                            for (var i = 1; i < bodyData.tagsu.length; i++) {
+                                list = list + ',' + bodyData.tagsu[i].id;
+                            }
+                            url = apiData.apiUrl + '/users/batch' + apiData.apiKey + '&ids=' + list;
+                        }
+                        request.get(url, function (error_recus, response_recus, body_recus) {
+                            var bodyData_recus = parseJSON(body_recus);
+                            bodyData.tagsu = bodyData_recus;
+                            res.render('project_detail', {
+                                dataType: 'Projects_detail',
+                                apiData: bodyData,
+                            });
+                        });
+                    });
+                });
+            })
+        });
     });
 });
