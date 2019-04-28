@@ -3,11 +3,16 @@
 
 <head lang="en">
     <meta charset="UTF-8">
+    <% include ../style/style.ejs%>
+    <% include ../comment/head.ejs %>
 </head>
 
 <body id="index_page" style="background:rgb(27, 26, 26); color:rgb(247, 241, 241)">
+    <%- include('../comment/top_bar.ejs',{dataType:dataType,project:''}); %>
 
     <div><%= JSON.stringify(apiData) %></div>
+
+    <% include ../comment/footer %>
 
 </body>
 

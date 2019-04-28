@@ -1,0 +1,12 @@
+<header class=" mdc-top-app-bar mdc-top-app-bar--short">
+    <div class="mdc-top-app-bar__row"style="background:#000; color:#FFF">
+      <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+      <% if (dataType === 'Projects') { %>
+       <span class="mdc-top-app-bar__title" style="font-size:200%;padding:20px">Projects List</span>
+       <% } else{%>
+        <span class="mdc-top-app-bar__title" style="font-size:200%;padding:20px"><%=project.name%></span>
+        <% } %>
+      </section>        
+    </div>
+</header>
+
