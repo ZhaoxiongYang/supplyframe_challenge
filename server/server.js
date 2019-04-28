@@ -1,9 +1,5 @@
-var apiData = {};
-
-require('custom-env').env('api')
-apiData.clientId = process.env.CLIENT_ID;
-apiData.clientSecret = process.env.CLIENT_SECRET;
-apiData.userKey = process.env.USER_KEY;
+require('./apiData.js');
+require('./parseJSON.js');
 
 apiData.apiKey = '?api_key=' + apiData.userKey;
 apiData.apiUrl = 'https://api.hackaday.io/v1';
@@ -16,13 +12,6 @@ apiData.createTokenUrl = function (code) {
         '&code=' + code +
         '&grant_type=authorization_code');
 };
-
-if (!apiData.userKey || !apiData.clientId || !apiData.clientSecret) {
-    console.log('Please fill in your client data!  See line 10 in server.js.');
-    console.log('Ending node process.');
-    process.exit();
-}
-
 var http = require('http'),
     express = require('express'),
     request = require('request'),
@@ -48,6 +37,7 @@ app.get('/', function (req, res) {
                 request.get(url_user, function (error_users, response_users, body_users) {
                     var bodyData_users = parseJSON(body_users);
                     bodyData.projects[i].user = bodyData_users;
+                    console.log(bodyData.projects[i]);
                     if (i == bodyData.projects.length - 1) {
                         res.render('../client/view/homepage.ejs', {
                             dataType: 'Projects',
@@ -59,13 +49,3 @@ app.get('/', function (req, res) {
         };
     });
 });
-
-function parseJSON(value) {
-    var parsed;
-    try {
-        parsed = JSON.parse(value);
-    } catch (e) {
-        console.log('Error parsing JSON: ', e, '\nInput: ', value);
-    }
-    return parsed || false;
-}
