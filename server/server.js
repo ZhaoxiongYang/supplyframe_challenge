@@ -37,7 +37,6 @@ app.get('/', function (req, res) {
                 request.get(url_user, function (error_users, response_users, body_users) {
                     var bodyData_users = parseJSON(body_users);
                     bodyData.projects[i].user = bodyData_users;
-                    console.log(bodyData.projects[i].image_url)
                     if (i == bodyData.projects.length - 1) {
                         res.render('../client/view/homepage.ejs', {
                             dataType: 'Projects',
