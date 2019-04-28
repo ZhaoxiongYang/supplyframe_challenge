@@ -10,7 +10,7 @@
 <body id="index_page" style="background:rgb(27, 26, 26); color:rgb(247, 241, 241)">
     <%- include('../comment/top_bar.ejs',{dataType:dataType,project:''}); %>
     <%- include('projects_grids.ejs',{projects:apiData.projects}); %>
-    <% include ../comment/footer %>
+    
     <div style="background:rgb(27, 26, 26); color:#FFF">
         <p class="text-center">
             <span><button id="previouspage" class="mdc-button mdc-button--unelevated"
@@ -20,6 +20,8 @@
         </p>
     </div>
     <%- include('../utils/get_New_page.ejs',{lastpage:apiData.last_page}); %>
+
+    <% include ../comment/footer %>
 </body>
 
 </html>
