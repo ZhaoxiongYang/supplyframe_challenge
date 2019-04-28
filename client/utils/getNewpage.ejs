@@ -1,0 +1,60 @@
+<script>
+
+    $('#previouspage').click(function pageupdate() {
+        var pathname = window.location.pathname;
+        var currentSearchString = window.location.search;
+        var params = {}
+        currentSearchString.substr(1).split('&').forEach(pair => {
+            [key, value] = pair.split('=')
+            params[key] = value
+        })
+        var pageid = parseInt(params['pageid'] ? params['pageid'] : 1);
+        // console.log(params['pageid']);
+        pageid -= 1;
+
+        $.ajax({
+            url: "/projects/" + pageid,
+            data: {},
+            type: "GET",
+            dataType: "html",
+            success: function (data) {
+
+                $('#projectslist').html(data);
+                window.history.pushState("next page", "", "/pages/?pageid=" + pageid);
+            },
+            error: function (xhr, status) {
+                alert("Sorry, there was a problem!");
+            },
+            complete: function (xhr, status) {
+            }
+        });
+    });
+    $('#nextpage').click(function pageupdate() {
+        var pathname = window.location.pathname;
+        var currentSearchString = window.location.search;
+        var params = {}
+        currentSearchString.substr(1).split('&').forEach(pair => {
+            [key, value] = pair.split('=')
+            params[key] = value
+        })
+        var pageid = parseInt(params['pageid'] ? params['pageid'] : 1);
+        pageid += 1;
+
+        $.ajax({
+            url: "/projects/" + pageid,
+            data: {},
+            type: "GET",
+            dataType: "html",
+            success: function (data) {
+                $('#projectslist').html(data);
+                window.history.pushState("next page", "", "/pages/?pageid=" + pageid);
+            },
+            error: function (xhr, status) {
+                alert("Sorry, there was a problem!");
+            },
+            complete: function (xhr, status) {
+                //$('#showresults').slideDown('slow')
+            }
+        });
+    });
+</script>

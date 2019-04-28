@@ -11,17 +11,20 @@
       <div class="demo-card__primary " >
         <h2 class="demo-card__title show_projectname" ><%=project.name%></h2>
         <%if(!project.user ||!project.user.username){%>
-        <h3 class="demo-card__subtitle mdc-typography mdc-typography--subtitle2 show_username " id="myTooltip">by
+        <h3 class="demo-card__subtitle mdc-typography mdc-typography--subtitle2 show_username ">by
             Anonymous</h3>
-
         <%}else{%>
         <h3 class="demo-card__subtitle show_username " id="myTooltip">by <%=project.user.username%></h3>
-
+        <%- include('../utils/tooltip.ejs',{user:project.user})%>
         <%}%>
       </div>
       <div id = "summary" class="demo-card__secondary mdc-typography mdc-typography--body2 show_summary"><%=project.summary%>
     </div>
-
+    <script>
+        tippy('#summary', {
+            content: "<%=project.summary%>",
+        })
+    </script>
 </div>
 <div class="mdc-card__actions">
     <div class="mdc-card__action-buttons">
@@ -40,6 +43,7 @@
         <button class="mdc-icon-button material-icons mdc-card__action mdc-card__action--icon--unbounded"
             title="<%= project.followers%> followers" data-mdc-ripple-is-unbounded="true">perm_identity</button>
     </div>
+
 </div>
 </div>
 <br />

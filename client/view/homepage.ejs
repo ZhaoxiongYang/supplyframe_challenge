@@ -11,6 +11,15 @@
     <%- include('../comment/top_bar.ejs',{dataType:dataType,project:''}); %>
     <%- include('projects_grids.ejs',{projects:apiData.projects}); %>
     <% include ../comment/footer %>
+    <div style="background:rgb(27, 26, 26); color:#FFF">
+        <p class="text-center">
+            <span><button id="previouspage" class="mdc-button mdc-button--unelevated"
+                    style="background:#00B; color:#FFF">Previous page</button></span>
+            <span><button id="nextpage" class="mdc-button mdc-button--unelevated"
+                    style="background:#00B; color:#FFF">Next page</button></span>
+        </p>
+    </div>
+    <%- include('../utils/getNewpage.ejs',{lastpage:apiData.last_page}); %>
 </body>
 
 </html>
