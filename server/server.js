@@ -144,7 +144,7 @@ app.get('/project/:id', function (req, res) {
                         request.get(url, function (error_recus, response_recus, body_recus) {
                             var bodyData_recus = parseJSON(body_recus);
                             bodyData.tagsu = bodyData_recus;
-                            res.render('project_detail', {
+                            res.render('../client/view/project_detail.ejs', {
                                 dataType: 'Projects_detail',
                                 apiData: bodyData,
                             });
