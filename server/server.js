@@ -48,3 +48,56 @@ app.get('/', function (req, res) {
         };
     });
 });
+
+app.get('/pages', function (req, res) {
+    console.log('\ninside /pages');
+    var page = req.query.pageid,
+        url = apiData.apiUrl + '/projects' + apiData.apiKey + "&per_page=9&page=" + page;
+    console.log('\npages Data Query: ', url);
+    request.get(url, function (error, response, body) {
+        var bodyData = parseJSON(body);
+        for (var i = 0; i < bodyData.projects.length; i++) {
+            (function (i) {
+                var url_user = apiData.apiUrl + '/users/' + bodyData.projects[i].owner_id + apiData.apiKey;
+                request.get(url_user, function (error_users, response_users, body_users) {
+                    var bodyData_users = parseJSON(body_users);
+                    bodyData.projects[i].user = bodyData_users;
+                    if (i == bodyData.projects.length - 1) {
+                        res.render('../client/view/homepage.ejs', {
+                            dataType: 'Projects',
+                            apiData: bodyData,
+                        });
+                    }
+                });
+            })(i);
+        };
+    });
+});
+
+app.get('/projects/:page', function (req, res) {
+    console.log('\ninside /projects/page');
+    var page = req.params.page,
+        url = apiData.apiUrl + '/projects' + apiData.apiKey + "&per_page=9&page=" + page;
+    console.log('\nProject Data Query: ', url);
+    request.get(url, function (error, response, body) {
+        var bodyData = parseJSON(body);
+        for (var i = 0; i < bodyData.projects.length; i++) {
+            (function (i) {
+                var url_user = apiData.apiUrl + '/users/' + bodyData.projects[i].owner_id + apiData.apiKey;
+                request.get(url_user, function (error_users, response_users, body_users) {
+                    var bodyData_users = parseJSON(body_users);
+                    bodyData.projects[i].user = bodyData_users;
+                    if (i == bodyData.projects.length - 1) {
+                        res.render('../client/view/projects_grids.ejs', {
+                            layout: false,
+                            dataType: 'Projects',
+                            projects: bodyData.projects,
+                        });
+                    }
+                });
+
+            })(i);
+
+        };
+    });
+});
