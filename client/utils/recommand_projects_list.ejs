@@ -1,0 +1,18 @@
+<div class="mdc-card demo-card demo-ui-control texthide">
+    <div class="mdc-card__primary-action demo-card__primary-action" tabindex="0">
+      <%if(project.image_url){%>
+      <div class="mdc-card__media mdc-card__media--square demo-card__media" style="background-image: url(&quot;<%=project.image_url%>&quot;);"></div>
+      <%}else{%>
+        <div class="mdc-card__media mdc-card__media--square demo-card__media" style="background-image: url(&quot;https://cdn.hackaday.io/images/2754671430848813673.jpg&quot;);"></div>
+        <%}%>
+      <div class="demo-card__primary">
+        <h2 class="demo-card__title mdc-typography mdc-typography--headline6 show_projectname"><%=project.name%></h2>
+
+      </div>
+    </div>
+    <div class="mdc-card__actions">
+      <div class="mdc-card__action-buttons">
+        <button class="mdc-button mdc-card__action mdc-card__action--button"><a href="/project/<%=project.id%>">LEARN MORE</a></button>
+      </div>
+    </div>
+  </div>

@@ -27,10 +27,37 @@
         <br />
         <br />
     </div>
+
+    <%if(apiData.tagsp.projects){%>
+    <p id="title3">Projects you may like:</p>
+    <div class="mdc-layout-grid__inner ">
+        <% for(var i=0;i < (apiData.tagsp.projects.length<=6?apiData.tagsp.projects.length:6);i++){%>
+
+        <div
+            class="mdc-layout-grid__cell mdc-card__media--16-9 mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-2-tablet mdc-layout-grid__cell--span-2-phone">
+            <%- include('../utils/recommand_projects_list.ejs',{project:apiData.tagsp.projects[i]}); %></div>
+
+        <%}%>
+                </div>
+                <%}%>
+
+        <%if(apiData.tagsu.users){%>
+        <p id="title3">People you may want to follow:</p>
+        <div class="mdc-layout-grid__inner ">
+            <% if(apiData.tagsu.users){
+                        for(var i=0;i < (apiData.tagsu.users.length<=6?apiData.tagsu.users.length:6);i++){%>
+
+            <div
+                class="mdc-layout-grid__cell mdc-card__media--16-9 mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-2-tablet mdc-layout-grid__cell--span-2-phone">
+                <%- include('../utils/recommand_users_list.ejs',{user:apiData.tagsu.users[i]}); %></div>
+
+            <%}}%>
+        </div>
+        <%}%>
+    
     <div>
         <p class="text-center">
-            <span><a href="javascript:history.go(-1)"><button
-                        class="mdc-button mdc-button--unelevated">BACK</button></a></span>
+                <span><a href="javascript:history.go(-1)"><button class="mdc-button mdc-button--unelevated">BACK</button></a></span>
         </p>
     </div>
     <%- include('../utils/getNewpage.ejs',{lastpage:apiData.last_page}); %>
