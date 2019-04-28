@@ -1,5 +1,5 @@
 function parseJSON (value) {
-    var parsed;
+    let parsed;
     try {
         parsed = JSON.parse(value);
     } catch (e) {

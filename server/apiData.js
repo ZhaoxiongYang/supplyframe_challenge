@@ -1,4 +1,4 @@
-var apiData = {};
+let apiData = {};
 require('custom-env').env('api')
 apiData.clientId = process.env.CLIENT_ID;
 apiData.clientSecret = process.env.CLIENT_SECRET;
