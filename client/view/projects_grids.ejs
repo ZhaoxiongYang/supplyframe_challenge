@@ -1,9 +1,11 @@
 <div id="projectslist" class="Project Grids">
     <div class="mdc-layout-grid">
+        <% for(var i=0;i<=projects.length-3;i+=3){%>
         <div class="mdc-layout-grid__inner">
-
-            <div class="mdc-layout-grid__cell"><%- include('project_display_unit.ejs',{project:projects[0]}); %></div>
-
+            <div class="mdc-layout-grid__cell"><%- include('project_display_unit.ejs',{project:projects[i]}); %></div>
+            <div class="mdc-layout-grid__cell"><%- include('project_display_unit.ejs',{project:projects[i+1]}); %></div>
+            <div class="mdc-layout-grid__cell"><%- include('project_display_unit.ejs',{project:projects[i+2]}); %></div>
+        </div>
+        <%}%>
         </div>
     </div>
-</div>
