@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@material/card": "^1.1.1",
+    "@material/dialog": "^1.1.1",
     "@material/layout-grid": "^0.41.0",
     "@material/list": "^1.1.1",
     "@material/top-app-bar": "^1.1.1",

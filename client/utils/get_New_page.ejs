@@ -1,5 +1,15 @@
-<script>
+<div id="spinner" style="display: none">
+    <p id="loading-spinner" alt="Loading">Loading ...</p>
+</div>
+<style type="text/css">
+    #spinner{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+    }
+</style>
 
+<script>
     $('#previouspage').click(function pageupdate() {
         var pathname = window.location.pathname;
         var currentSearchString = window.location.search;
@@ -11,6 +21,7 @@
         var pageid = parseInt(params['pageid'] ? params['pageid'] : 1);
         // console.log(params['pageid']);
         pageid -= 1;
+        $('#spinner').show();
 
         $.ajax({
             url: "/projects/" + pageid,
@@ -26,6 +37,7 @@
                 alert("Sorry, there was a problem!");
             },
             complete: function (xhr, status) {
+                $('#spinner').hide();
             }
         });
     });
@@ -39,6 +51,8 @@
         })
         var pageid = parseInt(params['pageid'] ? params['pageid'] : 1);
         pageid += 1;
+        $('#spinner').show();
+
 
         $.ajax({
             url: "/projects/" + pageid,
@@ -53,6 +67,7 @@
                 alert("Sorry, there was a problem!");
             },
             complete: function (xhr, status) {
+                $('#spinner').hide();
                 //$('#showresults').slideDown('slow')
             }
         });
