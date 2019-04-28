@@ -1,0 +1,59 @@
+@import "@material/button/mdc-button";
+@import "./mdc-layout-grid";
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://unpkg.com/tippy.js@4');
+@import url('https://unpkg.com/popper.js@1');
+@import url('https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js');
+@import url('https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js');
+@import url('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js');
+@import url('https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js');
+
+.text.ellipsis::after
+{
+	content: '...';
+	position:absolute;
+	right: -13px;
+	bottom: 5px;
+}
+	p.normal {font-weight: normal}
+	p.thick {font-weight: bold}
+	p.thicker {font-weight: 900}
+	p.title-size {font-size: 20px}
+	p.mtitle-size {font-size: 16px}
+	p.size {font-size: 12px}
+
+.padding_left_right{
+	padding-right: 15px;
+	padding-left: 15px;
+}
+a{text-decoration:none}
+
+p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+.font16{
+	font-size: 16px;
+}
+.font12{
+	font-size: 12px;
+}
+.font20{
+	font-size: 20px;
+}
+.title16 
+{
+	font-size: 16px;
+	font-weight: bold;
+
+}
+.title23 
+{
+	font-size: 23px;
+	font-weight: bold;
+
+}
