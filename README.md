@@ -15,6 +15,7 @@ USER_KEY =  <your user key>
 ```
 
 # install packages
+- from project root directory
 ```
 npm install
 ```
@@ -46,7 +47,7 @@ npm install
              ---> chromedriver
              ---> selenium-server-standalone-3.xx.xx.jar
  ```
- - run the test (note you need to have chrome installed)
+ - run the test from test root directory(note you need to have chrome installed)
  ```
  node nightwatch -e chrome
  ```
