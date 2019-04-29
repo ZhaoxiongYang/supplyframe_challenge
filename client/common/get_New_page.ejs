@@ -10,6 +10,7 @@
 </style>
 
 <script>
+
     $('#previouspage').click(function pageupdate() {
         var pathname = window.location.pathname;
         var currentSearchString = window.location.search;
@@ -19,7 +20,6 @@
             params[key] = value
         })
         var pageid = parseInt(params['pageid'] ? params['pageid'] : 1);
-        // console.log(params['pageid']);
         pageid -= 1;
         $('#spinner').show();
 

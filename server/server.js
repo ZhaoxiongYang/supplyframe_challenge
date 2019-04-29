@@ -20,15 +20,12 @@ let http = require('http'),
     port = 3000;
 
 server.listen(port);
-console.log('Listening on port: ', port);
 
 app.set('views', __dirname);
 app.set('view engine', 'ejs');
 
 app.get('/', function (req, res) {
-    console.log('\ninside /projects');
     let url = apiData.apiUrl + '/projects' + apiData.apiKey + "&per_page=9";
-    console.log('\nProject Data Query: ', url);
     request.get(url, function (error, response, body) {
         let bodyData = parseJSON(body);
         for (let i = 0; i < bodyData.projects.length; i++) {
@@ -50,10 +47,8 @@ app.get('/', function (req, res) {
 });
 
 app.get('/pages', function (req, res) {
-    console.log('\ninside /pages');
     let page = req.query.pageid,
         url = apiData.apiUrl + '/projects' + apiData.apiKey + "&per_page=9&page=" + page;
-    console.log('\npages Data Query: ', url);
     request.get(url, function (error, response, body) {
         var bodyData = parseJSON(body);
         for (var i = 0; i < bodyData.projects.length; i++) {
@@ -75,10 +70,8 @@ app.get('/pages', function (req, res) {
 });
 
 app.get('/projects/:page', function (req, res) {
-    console.log('\ninside /projects/page');
     let page = req.params.page,
         url = apiData.apiUrl + '/projects' + apiData.apiKey + "&per_page=9&page=" + page;
-    console.log('\nProject Data Query: ', url);
     request.get(url, function (error, response, body) {
         let bodyData = parseJSON(body);
         for (let i = 0; i < bodyData.projects.length; i++) {
@@ -101,10 +94,8 @@ app.get('/projects/:page', function (req, res) {
 });
 
 app.get('/project/:id', function (req, res) {
-    console.log('\ninside /project/detail_page');
     let id = req.params.id,
         url = apiData.apiUrl + '/projects/' + id + apiData.apiKey;
-    console.log('\nProject detail Data Query: ', url);
     request.get(url, function (error, response, body) {
         let bodyData = parseJSON(body);
         let url_user = apiData.apiUrl + '/users/' + bodyData.owner_id + apiData.apiKey;
@@ -112,13 +103,11 @@ app.get('/project/:id', function (req, res) {
             let bodyData_users = parseJSON(body_users);
             bodyData.user = bodyData_users;
             let url_recp = apiData.apiUrl + '/projects/' + bodyData.id + '/tags' + apiData.apiKey;
-            console.log('\nProject recommand Data Query: ', url_recp);
             request.get(url_recp, function (error_recp, response_recp, body_recp) {
                 let bodyData_recp = parseJSON(body_recp);
                 bodyData.tagsp = bodyData_recp.tags;
                 let list = '';
                 if (bodyData.tagsp[0]) {
-                    console.log('here');
                     list = bodyData.tagsp[0].id;
                     for (let i = 1; i < bodyData.tagsp.length; i++) {
                         list = list + ',' + bodyData.tagsp[i].id;
@@ -129,7 +118,6 @@ app.get('/project/:id', function (req, res) {
                     let bodyData_recps = parseJSON(body_recps);
                     bodyData.tagsp = bodyData_recps;
                     let url_recu = apiData.apiUrl + '/users/' + bodyData.owner_id + '/tags' + apiData.apiKey;
-                    console.log('\nUser recommand Data Query: ', url_recu);
                     request.get(url_recu, function (error_recu, response_recu, body_recu) {
                         let bodyData_recu = parseJSON(body_recu);
                         bodyData.tagsu = bodyData_recu.tags;
