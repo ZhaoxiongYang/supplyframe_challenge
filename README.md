@@ -2,6 +2,7 @@
 
 # get hackaday crendentials
    * create ".env.api" file under server/
+   * your directory structure should be something similar like below:
    ```
    ---> server
        ---> .env.api
@@ -33,9 +34,11 @@ npm install
  cd test/
  npm install 
  ```
- - download most recent chromedriver from https://chromedriver.storage.googleapis.com/index.html?path=2.33/
+ - download and extract most recent chromedriver from https://chromedriver.storage.googleapis.com/index.html?path=2.33/
  - download selenium server from https://www.seleniumhq.org/download/
  - From Downloaded folder, move both files — Selenium-Standalone-3.x.x. jar and chromedriver to /lib/drivers directory on your project.
+ - your directory structure should be something similar like below:
+
  ```
    ---> test
        ---> lib
