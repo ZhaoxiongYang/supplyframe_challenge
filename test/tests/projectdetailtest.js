@@ -1,14 +1,14 @@
 module.exports = {
-  tags: ['homepage'],
-  'homepage title test' : function (browser) {
+  tags: ['detailpage'],
+  'detailpage title test' : function (browser) {
     browser
       .url('http://localhost:3000/')
       .assert.title("HAD Challenge")
       .end()
   },
-  'homepage load test' : function (browser){
+  'detailpage load test' : function (browser){
     browser
-      .url('http://localhost:3000/')
+      .url('http://localhost:3000/project/19035')
       .waitForElementVisible('body',100000)
       .end()
   },
