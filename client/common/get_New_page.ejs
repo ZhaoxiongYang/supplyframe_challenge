@@ -20,7 +20,7 @@
             params[key] = value
         })
         let pageid = parseInt(params['pageid'] ? params['pageid'] : 1);
-        if(pageid == 1) {
+        if(pageid <= 1) {
             return;
         }
         pageid = Math.max(1, pageid - 1);
@@ -53,6 +53,10 @@
             params[key] = value
         })
         let pageid = parseInt(params['pageid'] ? params['pageid'] : 1);
+
+        if (pageid >= parseInt(<%= lastpage %>)) {
+            return;
+        }
         pageid += 1;
         $('#spinner').show();
 
