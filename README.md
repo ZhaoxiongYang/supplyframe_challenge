@@ -14,7 +14,6 @@ USER_KEY =  <your user key>
 npm install
 npm install custom-env --save
 npm install express
-npm insatll eslint
 ```
 
 # how to run code
