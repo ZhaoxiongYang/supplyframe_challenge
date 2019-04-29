@@ -12,15 +12,18 @@
 <script>
 
     $('#previouspage').click(function pageupdate() {
-        var pathname = window.location.pathname;
-        var currentSearchString = window.location.search;
-        var params = {}
+        let pathname = window.location.pathname;
+        let currentSearchString = window.location.search;
+        let params = {}
         currentSearchString.substr(1).split('&').forEach(pair => {
             [key, value] = pair.split('=')
             params[key] = value
         })
-        var pageid = parseInt(params['pageid'] ? params['pageid'] : 1);
-        pageid -= 1;
+        let pageid = parseInt(params['pageid'] ? params['pageid'] : 1);
+        if(pageid == 1) {
+            return;
+        }
+        pageid = Math.max(1, pageid - 1);
         $('#spinner').show();
 
         $.ajax({
@@ -42,14 +45,14 @@
         });
     });
     $('#nextpage').click(function pageupdate() {
-        var pathname = window.location.pathname;
-        var currentSearchString = window.location.search;
-        var params = {}
+        let pathname = window.location.pathname;
+        let currentSearchString = window.location.search;
+        let params = {}
         currentSearchString.substr(1).split('&').forEach(pair => {
             [key, value] = pair.split('=')
             params[key] = value
         })
-        var pageid = parseInt(params['pageid'] ? params['pageid'] : 1);
+        let pageid = parseInt(params['pageid'] ? params['pageid'] : 1);
         pageid += 1;
         $('#spinner').show();
 
