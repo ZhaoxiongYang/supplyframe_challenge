@@ -1,9 +1,9 @@
 <br />
 <div class="mdc-card demo-card  " style="background:#AAA; color:#000">
-    <div class="mdc-card__primary-action demo-card__primary-action" tabindex="0">
+    <div id="project_image" class="mdc-card__primary-action demo-card__primary-action" tabindex="0" onclick="window.location.href = '/project/<%=project.id%>';">
         <%if(project.image_url){%>
         <div class="mdc-card__media mdc-card__media--16-9 demo-card__media"
-            style="background-image: url(&quot;<%=project.image_url%>&quot;);"></div>
+            style="background-image: url(&quot;<%=project.image_url%>&quot;);"><a href="/project/<%=project.id%>"></a></div>
         <%}else{%>
         <div class="mdc-card__media mdc-card__media--16-9 demo-card__media"
             style="background-image: url(&quot;https://cdn.hackaday.io/images/2754671430848813673.jpg&quot;);"></div>
@@ -47,3 +47,4 @@
 </div>
 </div>
 <br />
+
