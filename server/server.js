@@ -1,5 +1,5 @@
-require('./apiData.js');
-require('./parseJSON.js');
+require('./api_data.js');
+require('./parse_json.js');
 
 apiData.apiKey = '?api_key=' + apiData.userKey;
 apiData.apiUrl = 'https://api.hackaday.io/v1';
