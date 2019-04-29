@@ -4,12 +4,12 @@
 <head lang="en">
     <meta charset="UTF-8">
     <% include ../style/style.ejs%>
-    <% include ../comment/head.ejs %>
+    <% include ../common/head.ejs %>
 
 </head>
 
 <body style="background:rgb(189, 188, 188); color:rgb(7, 7, 7)">
-    <%- include('../comment/top_bar.ejs',{project:apiData}); %>
+    <%- include('../common/top_bar.ejs',{project:apiData}); %>
     <div class="mdc-layout-grid">
         <div class="mdc-layout-grid__inner ">
             <%if(apiData.image_url){%>

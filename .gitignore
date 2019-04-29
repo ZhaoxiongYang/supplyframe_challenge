@@ -1,3 +1,7 @@
 .eslintrc.json
 node_modules
 .env.api
+tests_output
+log
+reports
+lib

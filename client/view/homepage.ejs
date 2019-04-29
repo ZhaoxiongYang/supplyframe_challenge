@@ -4,11 +4,11 @@
 <head lang="en">
     <meta charset="UTF-8">
     <% include ../style/style.ejs%>
-    <% include ../comment/head.ejs %>
+    <% include ../common/head.ejs %>
 </head>
 
 <body id="index_page" style="background:rgb(27, 26, 26); color:rgb(247, 241, 241)">
-    <%- include('../comment/top_bar.ejs',{dataType:dataType,project:''}); %>
+    <%- include('../common/top_bar.ejs',{dataType:dataType,project:''}); %>
     <%- include('projects_grids.ejs',{projects:apiData.projects}); %>
     
     <div style="background:rgb(27, 26, 26); color:#FFF">
@@ -21,7 +21,7 @@
     </div>
     <%- include('../utils/get_New_page.ejs',{lastpage:apiData.last_page}); %>
 
-    <% include ../comment/footer %>
+    <% include ../common/footer %>
 </body>
 
 </html>
