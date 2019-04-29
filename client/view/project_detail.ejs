@@ -22,7 +22,7 @@
                 <img style="width : 100%" src="https://cdn.hackaday.io/images/2754671430848813673.jpg"></div>
             <%}%>
               <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 mdc-layout-grid__cell--span-3-tablet mdc-layout-grid__cell--span-2-phone">
-                    <%- include('../utils/detail_list.ejs',{apiData:apiData}); %>
+                    <%- include('../common/detail_list.ejs',{apiData:apiData}); %>
         </div>
         <br />
         <br />
@@ -35,7 +35,7 @@
 
         <div
             class="mdc-layout-grid__cell mdc-card__media--16-9 mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-2-tablet mdc-layout-grid__cell--span-2-phone">
-            <%- include('../utils/recommand_projects_list.ejs',{project:apiData.tagsp.projects[i]}); %></div>
+            <%- include('../common/recommand_projects_list.ejs',{project:apiData.tagsp.projects[i]}); %></div>
 
         <%}%>
                 </div>
@@ -49,7 +49,7 @@
 
             <div
                 class="mdc-layout-grid__cell mdc-card__media--16-9 mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-2-tablet mdc-layout-grid__cell--span-2-phone">
-                <%- include('../utils/recommand_users_list.ejs',{user:apiData.tagsu.users[i]}); %></div>
+                <%- include('../common/recommand_users_list.ejs',{user:apiData.tagsu.users[i]}); %></div>
 
             <%}}%>
         </div>
@@ -60,7 +60,7 @@
                 <span><a href="javascript:history.go(-1)"><button class="mdc-button mdc-button--unelevated">BACK</button></a></span>
         </p>
     </div>
-    <%- include('../utils/get_New_page.ejs',{lastpage:apiData.last_page}); %>
+    <%- include('../common/get_New_page.ejs',{lastpage:apiData.last_page}); %>
 </body>
 
 </html>
