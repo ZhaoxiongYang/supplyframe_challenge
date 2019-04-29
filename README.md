@@ -2,6 +2,10 @@
 
 # get hackaday crendentials
    * create ".env.api" file under server/
+   ```
+   ---> server
+       ---> .env.api
+   ```
    * fill the .env.api with the hackday crendentials in below format:
    ```
 CLIENT_ID = <your client ID>
